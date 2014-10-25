@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var AsteroidModel = require('mongoose').model('Asteroid');
+var AsteroidModel = require('./models/Asteroids.js').Asteroid
 mongoose.connect('mongodb://localhost/asteroids')
 var dir = './seeds';
 var db = mongoose.connection;
@@ -23,13 +23,16 @@ db.once('open', function callback() {
       var parsedJSON = require(dir + '/' + file);
 
       for(var i = 0; i < parsedJSON.length; i++) {
-        db.collection(collection_name).insert(parsedJSON[i], function(err, records){
-          AsteroidModel.create(records);
-        })
+        AsteroidModel.create(parsedJSON[i]);
+        console.log('Item: ' + i + ' has been recorded');
+        // db.collection(collection_name).insert(parsedJSON[i], function(err, records){
+        // })
       }
 
     });
   });
 
 });
+
+mongoose.disconnect();
 

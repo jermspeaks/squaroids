@@ -8,4 +8,8 @@ var AsteroidSchema = new mongoose.Schema({
   id: Number
 });
 
-mongoose.model('Asteroid', PostSchema);
+var Asteroid = mongoose.model('Asteroid', AsteroidSchema);
+
+module.exports = {
+  Asteroid: Asteroid
+}

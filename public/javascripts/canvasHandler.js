@@ -4,10 +4,16 @@ $(document).ready(function(){
   CANVAS_WIDTH = canvas.width;
   CANVAS_HEIGHT = canvas.height;
   
+  //asteroid location temp variables
+  ast_x = 50;
+  ast_y = 50;
+  
   //temporary data to be fetched from models
   earth_size = 200;
   asteroids = [];
-  asteroids.push(Asteroid());
+  
+  //use this to add a new asteroid
+  addAsteroid(400, 20);
   
   initialise();
 })
@@ -28,14 +34,20 @@ function initialise(){
 
 }
 
+function addAsteroid(x, y){
+  ast_x = x;
+  ast_y = y;
+  asteroids.push(Asteroid());
+}
+
 function Asteroid(){  
   var I = {};
   
   I.color = 'black';
   I.width = 50;
   I.height = 50;
-  I.x = 50;
-  I.y = 50;
+  I.x = ast_x;
+  I.y = ast_y;
   
   I.draw = function() {
     ctx.fillStyle = this.color;

@@ -23,6 +23,6 @@ function initialise(){
   //draw temp asteroids
   ctx.fillStyle = 'red';
   ctx.fillRect(50, 50, ast_size, ast_size);
-  ctx.fillRect(150, 150, ast_size, ast_size);
-  ctx.fillRect(250, 250, ast_size, ast_size);
+  ctx.fillRect(150, 50, ast_size, ast_size);
+  ctx.fillRect(250, 50, ast_size, ast_size);
 }

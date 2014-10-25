@@ -12,11 +12,6 @@ $(document).ready(function(){
   initialise();
 })
 
-<<<<<<< HEAD
-function init(){
-  ctx.fillStyle = "#0101DF";
-  ctx.fillRect(0, 0, 300, 300);
-=======
 function initialise(){
   //stroke around the whole canvas
   ctx.strokeStyle = 'black';
@@ -48,5 +43,4 @@ function Asteroid(){
 };
 
   return I;
->>>>>>> origin/canvas
 }

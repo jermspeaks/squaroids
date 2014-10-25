@@ -4,9 +4,13 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="javascripts/model.js"></script>
+    <script src="javascripts/canvasHandler.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <canvas id="canvas" width="640" height="480">
+      Hopefully you don't see this. If you do, get a new browser.
+    </canvas>
   </body>
 </html>

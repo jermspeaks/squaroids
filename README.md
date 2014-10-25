@@ -1,7 +1,7 @@
 SQUAROIDS
 =========
 
-Squaeroids are simplified representation of most relevant data that everybody can understand.
+Squaroids are simplified representation of most relevant data that everybody can understand.
 
 Squareoids isolate data and concentrate attention to most familiar one, which help us to perceive invisible in a way we actually can experience. 
 Like other objects that surrounds us at highway. They differ in size, speed, weight and we might collide with them. 

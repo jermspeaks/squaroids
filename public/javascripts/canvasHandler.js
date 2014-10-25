@@ -6,7 +6,8 @@ $(document).ready(function(){
   
   //temporary data to be fetched from models
   earth_size = 200;
-  ast_size = 50;
+  asteroids = [];
+  asteroids.push(Asteroid());
   
   initialise();
 })
@@ -21,8 +22,25 @@ function initialise(){
   ctx.fillRect((CANVAS_WIDTH - earth_size)/2, CANVAS_HEIGHT - earth_size, earth_size, earth_size);
   
   //draw temp asteroids
-  ctx.fillStyle = 'red';
-  ctx.fillRect(50, 50, ast_size, ast_size);
-  ctx.fillRect(150, 50, ast_size, ast_size);
-  ctx.fillRect(250, 50, ast_size, ast_size);
+  asteroids.forEach(function(asteroid) {
+    asteroid.draw();
+  });
+
+}
+
+function Asteroid(){  
+  var I = {};
+  
+  I.color = 'black';
+  I.width = 50;
+  I.height = 50;
+  I.x = 50;
+  I.y = 50;
+  
+  I.draw = function() {
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+};
+
+  return I;
 }

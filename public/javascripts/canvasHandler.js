@@ -4,6 +4,39 @@ $(document).ready(function(){
   CANVAS_WIDTH = canvas.width;
   CANVAS_HEIGHT = canvas.height;
   
+  initialise();
+  
+  var FPS = 60;
+  setInterval(function() {
+    update();
+    draw();
+  }, 1000/FPS);
+})
+
+function update(){
+  //move asteroids
+  asteroids.forEach(function(asteroid) {
+    asteroid.update();
+  });
+}
+
+function draw(){
+  //redraw and stroke around the whole canvas
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.strokeStyle = 'black';
+  ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  
+  //draw earth
+  ctx.fillStyle = 'navy';
+  ctx.fillRect((CANVAS_WIDTH - earth_size)/2, CANVAS_HEIGHT - earth_size, earth_size, earth_size);
+  
+  //draw asteroids
+  asteroids.forEach(function(asteroid) {
+    asteroid.draw();
+  });
+}
+
+function initialise(){
   //asteroid location temp variables
   ast_x = 50;
   ast_y = 50;
@@ -13,25 +46,7 @@ $(document).ready(function(){
   asteroids = [];
   
   //use this to add a new asteroid
-  addAsteroid(400, 20);
-  
-  initialise();
-})
-
-function initialise(){
-  //stroke around the whole canvas
-  ctx.strokeStyle = 'black';
-  ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  
-  //draw earth
-  ctx.fillStyle = 'navy';
-  ctx.fillRect((CANVAS_WIDTH - earth_size)/2, CANVAS_HEIGHT - earth_size, earth_size, earth_size);
-  
-  //draw temp asteroids
-  asteroids.forEach(function(asteroid) {
-    asteroid.draw();
-  });
-
+  addAsteroid(350, 20);
 }
 
 function addAsteroid(x, y){
@@ -48,10 +63,25 @@ function Asteroid(){
   I.height = 50;
   I.x = ast_x;
   I.y = ast_y;
+  I.alive = true;
   
   I.draw = function() {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if(this.alive){
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+};
+
+  I.update = function() {
+    if(this.alive){
+      if((this.x > ((CANVAS_WIDTH-earth_size)/2)) && (this.x < ((CANVAS_WIDTH+earth_size)/2)) && (this.y > (CANVAS_HEIGHT - earth_size))){
+        alert("asteroid hit earth");
+        this.alive = false;
+      }
+      else{
+        this.y++;
+      }
+    }
 };
 
   return I;

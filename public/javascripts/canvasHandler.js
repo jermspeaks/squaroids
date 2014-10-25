@@ -5,6 +5,6 @@ $(document).ready(function(){
 })
 
 function init(){
-  ctx.fillStyle = "#0101DF";
-  ctx.fillRect(0, 0, 50, 50);
+  ctx.fillStyle = #0101DF;
+  ctx.fillRect(0, 0, 300, 300);
 }
